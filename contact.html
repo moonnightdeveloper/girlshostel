@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #9c89b8;
+            --accent: #5eead4;
+            --light: #f8f9fa;
+            --dark: #2d3047;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d73;
+            border-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 139, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.1) 0%, rgba(156, 137, 184, 0.1) 100%);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 107, 139, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(156, 137, 184, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .contact-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 50px;
+            height: 100%;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: white;
+            color: var(--primary);
+        }
+
+        .contact-details h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .social-links-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .social-link-contact {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .social-link-contact:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            padding: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .form-control {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.05) 0%, rgba(156, 137, 184, 0.05) 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 25px;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+
+        .faq-icon {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 80px 0 0;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            height: 450px;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .map-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            color: white;
+        }
+
+        .cta-card h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-card p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-light:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .success-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: var(--transition);
+        }
+
+        .success-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                border-radius: 20px 20px 0 0;
+            }
+            
+            .contact-form {
+                border-radius: 0 0 20px 20px;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 30px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Girls<span>Hostel</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./rooms.html">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Get In Touch</h1>
+                    <p>We're here to help! Contact us for any inquiries, room bookings, or to schedule a visit to our hostel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="contact-info">
+                            <h3>Let's Talk</h3>
+                            <p>Feel free to reach out to us through any of the following channels. We're always happy to assist you!</p>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Our Location</h4>
+                                    <p>123 Hostel Street, Near Delhi University<br>New Delhi, 110001</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Phone Number</h4>
+                                    <p>+91 98765 43210<br>+91 98765 43211</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Email Address</h4>
+                                    <p>info@Girlshostel.com<br>bookings@Girlshostel.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Office Hours</h4>
+                                    <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>Sunday: 10:00 AM - 5:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="social-links-contact">
+                                <a href="#" class="social-link-contact">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link-contact">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link-contact">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link-contact">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-7">
+                        <div class="contact-form">
+                            <h3 class="mb-4">Send Us a Message</h3>
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" id="fullName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Subject *</label>
+                                            <input type="text" class="form-control" id="subject" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Your Message *</label>
+                                    <textarea class="form-control" id="message" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            Subscribe to our newsletter for updates and offers
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What documents are required for booking?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You'll need a government-issued photo ID (Aadhar Card, Passport, or Driver's License), student ID (if applicable), and 2 passport-size photographs. All documents are verified during check-in.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is the security deposit amount?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The security deposit is equivalent to one month's rent. It is fully refundable upon checkout, subject to no damages to property and clearance of all dues.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I visit the hostel before booking?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we encourage prospective residents to visit our hostel. Please schedule an appointment through our contact form or by calling us to arrange a convenient time for a tour.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What amenities are included in the rent?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Your rent includes accommodation, Wi-Fi, electricity, water, security, housekeeping, and access to all common facilities like study room, lounge, and kitchen. Laundry facilities are available at additional cost.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is there any visitor policy?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For security reasons, male visitors are not permitted in rooms or common areas. Female visitors are allowed in common areas between 8:00 AM and 8:00 PM with prior registration at reception.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Our Location</h2>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Find Us Here</h3>
+                    <p>123 Hostel Street, Near Delhi University, New Delhi</p>
+                    <p class="mt-3">We're conveniently located near Delhi University with easy access to public transportation, markets, and educational institutions.</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-light mt-4">Open in Google Maps</a>
+                </div>
+                <!-- In a real implementation, you would embed a Google Maps iframe here -->
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7612.873438979477!2d78.44421899144947!3d17.438799383828492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90c55bb43183%3A0x1abc135b23ee2703!2sAmeerpet%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1764161419685!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Book Your Stay?</h2>
+                <p>Don't wait! Secure your spot in our comfortable and secure girls hostel today.</p>
+                <div class="cta-btns">
+                    <a href="/booking.html" class="btn btn-light">Book Now</a>
+                    <a href="./gallery.html" class="btn btn-outline-primary" style="background: rgba(255,255,255,0.2); color: white; border-color: white;">View Gallery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <a href="index.html" class="footer-logo">Girls<span>Hostel</span></a>
+                    <p>At Girls Girls Hostel, we are committed to protecting your privacy and ensuring the security of your personal information</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#rooms">Rooms</a></li>
+                           <li><a href="./Terms&Conditions.html">Terms</a> | <a href="./PrivacyPolicy.html">Privacy Policy</a></li>
+                            <li></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Rooms</h5>
+                        <ul>
+                            <li><a href="#rooms">Single Occupancy</a></li>
+                            <li><a href="#rooms">Double Sharing</a></li>
+                            <li><a href="#rooms">Triple Sharing</a></li>
+                            <li><a href="#rooms">Four Sharing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Shivbagh Colony Road, ShivBagh, Balkampet, Hyderabad, Telangana 500016</li>
+                            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@Girlshostel.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Girls Hostel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="mb-3">Message Sent Successfully!</h3>
+            <p class="mb-4">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button class="btn btn-primary" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked FAQ item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!fullName || !email || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show success modal
+            document.getElementById('successModal').classList.add('active');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('successModal').classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Add animation to contact items on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe contact items for animation
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

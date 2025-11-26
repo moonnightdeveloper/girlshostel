@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #9c89b8;
+            --accent: #5eead4;
+            --light: #f8f9fa;
+            --dark: #2d3047;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d73;
+            border-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 139, 0.3);
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.1) 0%, rgba(156, 137, 184, 0.1) 100%);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 107, 139, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(156, 137, 184, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Privacy Content */
+        .privacy-content {
+            padding: 80px 0;
+        }
+
+        .privacy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .privacy-nav {
+            position: sticky;
+            top: 120px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .privacy-nav h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 12px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .nav-links a i {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .privacy-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .privacy-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .privacy-section h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+        }
+
+        .privacy-section h2 i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+
+        .privacy-section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+
+        .privacy-section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .privacy-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .highlight {
+            background: rgba(255, 107, 139, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: rgba(94, 234, 212, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-box i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 107, 139, 0.05);
+        }
+
+        .last-updated {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: 600;
+        }
+
+        /* Consent Section */
+        .consent-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.05) 0%, rgba(156, 137, 184, 0.05) 100%);
+        }
+
+        .consent-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .consent-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+        }
+
+        /* Rights Section */
+        .rights-section {
+            padding: 80px 0;
+        }
+
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .right-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .right-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .right-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .privacy-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .privacy-section {
+                padding: 30px;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .privacy-section {
+                padding: 20px;
+            }
+            
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .rights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar, .hero, .consent-section, .rights-section, footer {
+                display: none;
+            }
+            
+            .privacy-content {
+                padding: 20px 0;
+            }
+            
+            .privacy-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Girls<span>Hostel</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./rooms.html">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Privacy Policy</h1>
+                    <p>Your privacy is important to us. This policy explains how we collect, use, and protect your personal information at Girls Girls Hostel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="privacy-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="privacy-nav">
+                        <h4>Quick Navigation</h4>
+                        <ul class="nav-links">
+                            <li><a href="#introduction"><i class="fas fa-chevron-right"></i> Introduction</a></li>
+                            <li><a href="#information"><i class="fas fa-chevron-right"></i> Information We Collect</a></li>
+                            <li><a href="#usage"><i class="fas fa-chevron-right"></i> How We Use Information</a></li>
+                            <li><a href="#sharing"><i class="fas fa-chevron-right"></i> Information Sharing</a></li>
+                            <li><a href="#protection"><i class="fas fa-chevron-right"></i> Data Protection</a></li>
+                            <li><a href="#cookies"><i class="fas fa-chevron-right"></i> Cookies & Tracking</a></li>
+                            <li><a href="#rights"><i class="fas fa-chevron-right"></i> Your Rights</a></li>
+                            <li><a href="#retention"><i class="fas fa-chevron-right"></i> Data Retention</a></li>
+                            <li><a href="#changes"><i class="fas fa-chevron-right"></i> Policy Changes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Introduction -->
+                    <div class="privacy-section" id="introduction">
+                        <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                        
+                        <p>At Girls Girls Hostel, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services, visit our website, or stay at our hostel.</p>
+                        
+                        <p>By using our services, you consent to the data practices described in this policy. If you do not agree with any part of this policy, please do not use our services.</p>
+                        
+                        <div class="highlight">
+                            <p><strong>Scope:</strong> This policy applies to all personal information collected through our website, booking platform, mobile applications, and during your stay at our hostel.</p>
+                        </div>
+                    </div>
+
+                    <!-- Information We Collect -->
+                    <div class="privacy-section" id="information">
+                        <h2><i class="fas fa-database"></i> Information We Collect</h2>
+                        
+                        <h3>Personal Information</h3>
+                        <p>We collect various types of personal information to provide our services effectively:</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Information Type</th>
+                                    <th>Examples</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Identification Data</td>
+                                    <td>Full name, date of birth, photo ID details</td>
+                                    <td>Verification and registration</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact Information</td>
+                                    <td>Email, phone number, address</td>
+                                    <td>Communication and emergency contact</td>
+                                </tr>
+                                <tr>
+                                    <td>Booking Information</td>
+                                    <td>Check-in/out dates, room preferences</td>
+                                    <td>Reservation management</td>
+                                </tr>
+                                <tr>
+                                    <td>Payment Information</td>
+                                    <td>Card details, transaction history</td>
+                                    <td>Payment processing</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Contact</td>
+                                    <td>Emergency contact details</td>
+                                    <td>Safety and emergency situations</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Automatically Collected Information</h3>
+                        <p>When you visit our website or use our services, we may automatically collect:</p>
+                        <ul>
+                            <li>Device information (IP address, browser type, operating system)</li>
+                            <li>Usage data (pages visited, time spent, click patterns)</li>
+                            <li>Location data (general location based on IP address)</li>
+                            <li>Cookies and similar tracking technologies</li>
+                        </ul>
+                        
+                        <div class="info-box">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <p><strong>Note:</strong> We do not collect sensitive personal information such as racial or ethnic origin, political opinions, religious beliefs, or health data unless required for specific services with your explicit consent.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How We Use Information -->
+                    <div class="privacy-section" id="usage">
+                        <h2><i class="fas fa-cogs"></i> How We Use Your Information</h2>
+                        
+                        <h3>Primary Uses</h3>
+                        <p>We use your personal information for the following purposes:</p>
+                        <ul>
+                            <li><strong>Service Provision:</strong> To process bookings, manage your stay, and provide requested services</li>
+                            <li><strong>Communication:</strong> To send booking confirmations, updates, and important notices</li>
+                            <li><strong>Security:</strong> To ensure the safety and security of all residents and hostel premises</li>
+                            <li><strong>Payment Processing:</strong> To process payments and prevent fraudulent transactions</li>
+                            <li><strong>Customer Support:</strong> To respond to your inquiries and provide assistance</li>
+                            <li><strong>Legal Compliance:</strong> To comply with applicable laws and regulations</li>
+                        </ul>
+                        
+                        <h3>Marketing Communications</h3>
+                        <p>With your consent, we may use your contact information to send promotional materials, special offers, and updates about our services. You can opt-out of marketing communications at any time by:</p>
+                        <ul>
+                            <li>Clicking the "unsubscribe" link in our emails</li>
+                            <li>Updating your preferences in your account settings</li>
+                            <li>Contacting us directly at privacy@Girlshostel.com</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <p><strong>Legal Basis:</strong> We process your personal information based on legitimate business interests, contractual necessity, legal obligations, or with your explicit consent where required.</p>
+                        </div>
+                    </div>
+
+                    <!-- Information Sharing -->
+                    <div class="privacy-section" id="sharing">
+                        <h2><i class="fas fa-share-alt"></i> Information Sharing & Disclosure</h2>
+                        
+                        <h3>When We Share Information</h3>
+                        <p>We do not sell, trade, or rent your personal information to third parties. However, we may share your information in the following circumstances:</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Situation</th>
+                                    <th>Parties Involved</th>
+                                    <th>Information Shared</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Service Providers</td>
+                                    <td>Payment processors, IT services, security companies</td>
+                                    <td>Necessary information for service delivery</td>
+                                </tr>
+                                <tr>
+                                    <td>Legal Requirements</td>
+                                    <td>Law enforcement, government authorities</td>
+                                    <td>As required by law or legal process</td>
+                                </tr>
+                                <tr>
+                                    <td>Business Transfers</td>
+                                    <td>Successor entities in merger/acquisition</td>
+                                    <td>Customer information as business asset</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Situations</td>
+                                    <td>Emergency services, medical personnel</td>
+                                    <td>Contact and medical information if needed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>International Transfers</h3>
+                        <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy.</p>
+                    </div>
+
+                    <!-- Data Protection -->
+                    <div class="privacy-section" id="protection">
+                        <h2><i class="fas fa-lock"></i> Data Protection & Security</h2>
+                        
+                        <h3>Security Measures</h3>
+                        <p>We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+                        <ul>
+                            <li>Encryption of sensitive data during transmission and storage</li>
+                            <li>Regular security assessments and vulnerability testing</li>
+                            <li>Access controls and authentication mechanisms</li>
+                            <li>Secure network infrastructure with firewalls</li>
+                            <li>Physical security measures at our facilities</li>
+                            <li>Regular staff training on data protection</li>
+                        </ul>
+                        
+                        <h3>Data Breach Procedures</h3>
+                        <p>In the event of a data breach that may compromise your personal information, we will:</p>
+                        <ul>
+                            <li>Immediately investigate the breach and take corrective actions</li>
+                            <li>Notify affected individuals and relevant authorities as required by law</li>
+                            <li>Provide guidance on protective measures you can take</li>
+                            <li>Implement additional security measures to prevent future breaches</li>
+                        </ul>
+                        
+                        <div class="info-box">
+                            <i class="fas fa-user-shield"></i>
+                            <div>
+                                <p><strong>Your Role:</strong> While we take extensive measures to protect your information, we also recommend that you use strong passwords, keep your login credentials confidential, and log out of shared devices after use.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cookies & Tracking -->
+                    <div class="privacy-section" id="cookies">
+                        <h2><i class="fas fa-cookie-bite"></i> Cookies & Tracking Technologies</h2>
+                        
+                        <h3>What Are Cookies?</h3>
+                        <p>Cookies are small text files stored on your device when you visit our website. They help us provide, protect, and improve our services.</p>
+                        
+                        <h3>Types of Cookies We Use</h3>
+                        <ul>
+                            <li><strong>Essential Cookies:</strong> Required for basic website functionality and security</li>
+                            <li><strong>Performance Cookies:</strong> Help us understand how visitors interact with our website</li>
+                            <li><strong>Functionality Cookies:</strong> Remember your preferences and settings</li>
+                            <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements</li>
+                        </ul>
+                        
+                        <h3>Managing Cookies</h3>
+                        <p>You can control cookie settings through your browser preferences. However, disabling certain cookies may affect the functionality of our website and services.</p>
+                        
+                        <div class="highlight">
+                            <p><strong>Third-Party Services:</strong> We may use third-party services that place their own cookies. These services have their own privacy policies, and we recommend reviewing them.</p>
+                        </div>
+                    </div>
+
+                    <!-- Your Rights -->
+                    <div class="privacy-section" id="rights">
+                        <h2><i class="fas fa-user-check"></i> Your Privacy Rights</h2>
+                        
+                        <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+                        
+                        <div class="rights-grid">
+                            <div class="right-card">
+                                <div class="right-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <h4>Right to Access</h4>
+                                <p>You can request a copy of the personal information we hold about you.</p>
+                            </div>
+                            <div class="right-card">
+                                <div class="right-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <h4>Right to Correction</h4>
+                                <p>You can request correction of inaccurate or incomplete information.</p>
+                            </div>
+                            <div class="right-card">
+                                <div class="right-icon">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                                <h4>Right to Deletion</h4>
+                                <p>You can request deletion of your personal information in certain circumstances.</p>
+                            </div>
+                            <div class="right-card">
+                                <div class="right-icon">
+                                    <i class="fas fa-pause-circle"></i>
+                                </div>
+                                <h4>Right to Restrict</h4>
+                                <p>You can request restriction of processing in certain situations.</p>
+                            </div>
+                            <div class="right-card">
+                                <div class="right-icon">
+                                    <i class="fas fa-file-export"></i>
+                                </div>
+                                <h4>Right to Portability</h4>
+                                <p>You can request transfer of your data to another organization.</p>
+                            </div>
+                            <div class="right-card">
+                                <div class="right-icon">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <h4>Right to Object</h4>
+                                <p>You can object to certain types of processing, including direct marketing.</p>
+                            </div>
+                        </div>
+                        
+                        <p>To exercise any of these rights, please contact us using the details provided in the "Contact Us" section. We will respond to your request within 30 days.</p>
+                    </div>
+
+                    <!-- Data Retention -->
+                    <div class="privacy-section" id="retention">
+                        <h2><i class="fas fa-hourglass-half"></i> Data Retention</h2>
+                        
+                        <h3>Retention Periods</h3>
+                        <p>We retain your personal information only for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required or permitted by law.</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data Type</th>
+                                    <th>Retention Period</th>
+                                    <th>Reason for Retention</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Booking Information</td>
+                                    <td>7 years after stay</td>
+                                    <td>Legal and accounting requirements</td>
+                                </tr>
+                                <tr>
+                                    <td>Personal Information</td>
+                                    <td>2 years after last activity</td>
+                                    <td>Customer service and marketing</td>
+                                </tr>
+                                <tr>
+                                    <td>Payment Information</td>
+                                    <td>7 years after transaction</td>
+                                    <td>Financial and tax compliance</td>
+                                </tr>
+                                <tr>
+                                    <td>Website Analytics</td>
+                                    <td>26 months</td>
+                                    <td>Service improvement</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Data Deletion</h3>
+                        <p>When the retention period expires, we will securely delete or anonymize your personal information. Backup copies may be retained for additional periods as part of our disaster recovery procedures.</p>
+                    </div>
+
+                    <!-- Policy Changes -->
+                    <div class="privacy-section" id="changes">
+                        <h2><i class="fas fa-sync-alt"></i> Policy Changes & Updates</h2>
+                        
+                        <h3>Updates to This Policy</h3>
+                        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, services, or legal requirements. The updated policy will be posted on our website with the "Last Updated" date.</p>
+                        
+                        <h3>Notification of Changes</h3>
+                        <p>For significant changes to this policy, we will:</p>
+                        <ul>
+                            <li>Post a prominent notice on our website</li>
+                            <li>Send email notifications to registered users</li>
+                            <li>Provide advance notice when required by law</li>
+                        </ul>
+                        
+                        <p>We encourage you to review this policy periodically to stay informed about how we protect your information.</p>
+                        
+                        <div class="info-box">
+                            <i class="fas fa-balance-scale"></i>
+                            <div>
+                                <p><strong>Continued Use:</strong> Your continued use of our services after any changes to this policy constitutes your acceptance of the revised Privacy Policy.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Last Updated -->
+                    <div class="last-updated">
+                        <p>This Privacy Policy was last updated on October 15, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consent Section -->
+    <section class="consent-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="consent-card">
+                        <div class="consent-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Your Consent Matters</h3>
+                        <p class="mb-4">By using our services, you consent to the collection and use of your personal information as described in this Privacy Policy.</p>
+                        <a href="index.html#contact" class="btn btn-primary me-3">Contact Us</a>
+                        <a href="terms.html" class="btn btn-outline-primary">View Terms</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <a href="index.html" class="footer-logo">Girls<span>Hostel</span></a>
+                    <p>At Girls Girls Hostel, we are committed to protecting your privacy and ensuring the security of your personal information</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#rooms">Rooms</a></li>
+                           <li><a href="./Terms&Conditions.html">Terms</a> | <a href="./PrivacyPolicy.html">Privacy Policy</a></li>
+                            <li></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Rooms</h5>
+                        <ul>
+                            <li><a href="#rooms">Single Occupancy</a></li>
+                            <li><a href="#rooms">Double Sharing</a></li>
+                            <li><a href="#rooms">Triple Sharing</a></li>
+                            <li><a href="#rooms">Four Sharing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Shivbagh Colony Road, ShivBagh, Balkampet, Hyderabad, Telangana 500016</li>
+                            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@Girlshostel.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Girls Hostel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations for privacy sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all privacy sections for animation
+        document.querySelectorAll('.privacy-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Update active navigation link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.privacy-section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

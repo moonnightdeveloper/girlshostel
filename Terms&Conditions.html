@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #9c89b8;
+            --accent: #5eead4;
+            --light: #f8f9fa;
+            --dark: #2d3047;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d73;
+            border-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 139, 0.3);
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.1) 0%, rgba(156, 137, 184, 0.1) 100%);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 107, 139, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(156, 137, 184, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Terms Content */
+        .terms-content {
+            padding: 80px 0;
+        }
+
+        .terms-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .terms-nav {
+            position: sticky;
+            top: 120px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .terms-nav h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 12px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .nav-links a i {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .terms-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .terms-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .terms-section h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+        }
+
+        .terms-section h2 i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+
+        .terms-section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+
+        .terms-section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .terms-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .highlight {
+            background: rgba(255, 107, 139, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .note-box {
+            background: rgba(94, 234, 212, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .note-box i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .last-updated {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.05) 0%, rgba(156, 137, 184, 0.05) 100%);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .terms-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .terms-section {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .terms-section {
+                padding: 20px;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar, .hero, .contact-section, footer {
+                display: none;
+            }
+            
+            .terms-content {
+                padding: 20px 0;
+            }
+            
+            .terms-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Girls<span>Hostel</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./rooms.html">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Terms & Conditions</h1>
+                    <p>Please read these terms and conditions carefully before using our services or making a booking at Girls Girls Hostel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="terms-nav">
+                        <h4>Quick Navigation</h4>
+                        <ul class="nav-links">
+                            <li><a href="#booking"><i class="fas fa-chevron-right"></i> Booking & Reservations</a></li>
+                            <li><a href="#payment"><i class="fas fa-chevron-right"></i> Payment Terms</a></li>
+                            <li><a href="#cancellation"><i class="fas fa-chevron-right"></i> Cancellation Policy</a></li>
+                            <li><a href="#checkin"><i class="fas fa-chevron-right"></i> Check-in & Check-out</a></li>
+                            <li><a href="#conduct"><i class="fas fa-chevron-right"></i> Code of Conduct</a></li>
+                            <li><a href="#facilities"><i class="fas fa-chevron-right"></i> Facilities Usage</a></li>
+                            <li><a href="#liability"><i class="fas fa-chevron-right"></i> Liability & Security</a></li>
+                            <li><a href="#privacy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                            <li><a href="#modifications"><i class="fas fa-chevron-right"></i> Policy Modifications</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Booking & Reservations -->
+                    <div class="terms-section" id="booking">
+                        <h2><i class="fas fa-calendar-check"></i> Booking & Reservations</h2>
+                        
+                        <h3>Reservation Process</h3>
+                        <p>All bookings are subject to availability and must be made through our official website, mobile application, or authorized booking channels. Provisional bookings will be held for 24 hours only.</p>
+                        
+                        <h3>Eligibility</h3>
+                        <p>Girls Girls Hostel is exclusively for female students and working professionals aged 18 years and above. Valid government-issued photo ID proof is mandatory at the time of check-in.</p>
+                        
+                        <h3>Booking Confirmation</h3>
+                        <p>Your booking is confirmed only after:</p>
+                        <ul>
+                            <li>Receipt of complete booking form with accurate information</li>
+                            <li>Successful payment of security deposit and first month's rent</li>
+                            <li>Verification of submitted documents</li>
+                            <li>Issuance of confirmation email with booking reference number</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <p><strong>Important:</strong> Bookings made with false information will be considered invalid and will be cancelled without refund.</p>
+                        </div>
+                    </div>
+
+                    <!-- Payment Terms -->
+                    <div class="terms-section" id="payment">
+                        <h2><i class="fas fa-credit-card"></i> Payment Terms</h2>
+                        
+                        <h3>Fee Structure</h3>
+                        <p>Our fee structure includes:</p>
+                        <ul>
+                            <li>Monthly accommodation charges (varies by room type)</li>
+                            <li>Security deposit (refundable at the time of checkout)</li>
+                            <li>Maintenance charges (if applicable)</li>
+                            <li>Any additional services availed</li>
+                        </ul>
+                        
+                        <h3>Payment Schedule</h3>
+                        <p>Rent is payable monthly in advance, due on or before the 5th of each month. Late payments will attract a penalty of ₹100 per day after the due date.</p>
+                        
+                        <h3>Security Deposit</h3>
+                        <p>A security deposit equivalent to one month's rent is required at the time of booking. This deposit is refundable upon checkout, subject to:</p>
+                        <ul>
+                            <li>No damage to hostel property</li>
+                            <li>Clearance of all outstanding dues</li>
+                            <li>Proper handover of room and belongings</li>
+                            <li>Minimum 30-day notice period served</li>
+                        </ul>
+                        
+                        <div class="note-box">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <p><strong>Note:</strong> Security deposit refunds will be processed within 15 working days from the date of checkout and final settlement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cancellation Policy -->
+                    <div class="terms-section" id="cancellation">
+                        <h2><i class="fas fa-times-circle"></i> Cancellation Policy</h2>
+                        
+                        <h3>Cancellation by Resident</h3>
+                        <p>Cancellation requests must be submitted in writing via email or through our official portal. Refund eligibility is as follows:</p>
+                        <ul>
+                            <li><strong>More than 30 days before check-in:</strong> Full refund of security deposit and advance rent</li>
+                            <li><strong>15-30 days before check-in:</strong> 50% refund of security deposit, full refund of advance rent</li>
+                            <li><strong>Less than 15 days before check-in:</strong> No refund of security deposit, 50% refund of advance rent</li>
+                            <li><strong>After check-in:</strong> Security deposit forfeited, rent calculated on pro-rata basis</li>
+                        </ul>
+                        
+                        <h3>Cancellation by Hostel</h3>
+                        <p>We reserve the right to cancel a booking under exceptional circumstances including:</p>
+                        <ul>
+                            <li>Provision of false information during booking</li>
+                            <li>Violation of hostel rules and code of conduct</li>
+                            <li>Non-payment of dues</li>
+                            <li>Emergency situations requiring hostel closure</li>
+                        </ul>
+                        <p>In such cases, full refund will be provided for unused accommodation.</p>
+                    </div>
+
+                    <!-- Check-in & Check-out -->
+                    <div class="terms-section" id="checkin">
+                        <h2><i class="fas fa-door-open"></i> Check-in & Check-out</h2>
+                        
+                        <h3>Check-in Procedure</h3>
+                        <p>Standard check-in time is 12:00 PM. Early check-in may be available subject to room availability and may incur additional charges.</p>
+                        <p>Required documents at check-in:</p>
+                        <ul>
+                            <li>Government-issued photo ID (Aadhar Card, Passport, or Driver's License)</li>
+                            <li>Student ID card (if applicable)</li>
+                            <li>Passport-size photographs (2 copies)</li>
+                            <li>Booking confirmation receipt</li>
+                        </ul>
+                        
+                        <h3>Check-out Procedure</h3>
+                        <p>Standard check-out time is 11:00 AM. Late check-out may be permitted until 2:00 PM with prior approval and may incur half-day charges.</p>
+                        <p>Check-out process includes:</p>
+                        <ul>
+                            <li>Room inspection by hostel management</li>
+                            <li>Settlement of any outstanding dues</li>
+                            <li>Return of hostel property (keys, access cards, etc.)</li>
+                            <li>Security deposit refund processing</li>
+                        </ul>
+                    </div>
+
+                    <!-- Code of Conduct -->
+                    <div class="terms-section" id="conduct">
+                        <h2><i class="fas fa-users"></i> Code of Conduct</h2>
+                        
+                        <h3>General Behavior</h3>
+                        <p>All residents are expected to maintain decorum and respect the rights of fellow residents. Any form of harassment, discrimination, or disruptive behavior will not be tolerated.</p>
+                        
+                        <h3>Visitors Policy</h3>
+                        <p>For security reasons, male visitors are not permitted in rooms or common areas. Female visitors are allowed in common areas between 8:00 AM and 8:00 PM only, with prior registration at the reception.</p>
+                        
+                        <h3>Quiet Hours</h3>
+                        <p>Quiet hours are observed from 10:00 PM to 7:00 AM. During this time, residents are expected to maintain silence in corridors and rooms to ensure peaceful environment for all.</p>
+                        
+                        <h3>Prohibited Activities</h3>
+                        <p>The following activities are strictly prohibited within hostel premises:</p>
+                        <ul>
+                            <li>Smoking, consumption of alcohol, or any illegal substances</li>
+                            <li>Gambling or any form of betting</li>
+                            <li>Possession of weapons or hazardous materials</li>
+                            <li>Commercial activities without prior permission</li>
+                            <li>Tampering with security systems or CCTV cameras</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <p><strong>Important:</strong> Violation of code of conduct may result in immediate termination of accommodation without refund.</p>
+                        </div>
+                    </div>
+
+                    <!-- Facilities Usage -->
+                    <div class="terms-section" id="facilities">
+                        <h2><i class="fas fa-concierge-bell"></i> Facilities Usage</h2>
+                        
+                        <h3>Common Areas</h3>
+                        <p>Common areas including lounge, study room, and dining area are shared facilities. Residents are expected to maintain cleanliness and use these areas responsibly.</p>
+                        
+                        <h3>Kitchen & Dining</h3>
+                        <p>The common kitchen is available for light cooking between 6:00 AM and 10:00 PM. Residents must clean up after use and follow all safety guidelines.</p>
+                        
+                        <h3>Laundry Facilities</h3>
+                        <p>Washing machines are available for use as per the scheduled timings. Residents must provide their own detergent and follow operating instructions carefully.</p>
+                        
+                        <h3>Wi-Fi & Internet</h3>
+                        <p>Complimentary Wi-Fi is provided for educational and personal use. Downloading copyrighted material, accessing inappropriate content, or any illegal online activity is strictly prohibited.</p>
+                    </div>
+
+                    <!-- Liability & Security -->
+                    <div class="terms-section" id="liability">
+                        <h2><i class="fas fa-shield-alt"></i> Liability & Security</h2>
+                        
+                        <h3>Personal Belongings</h3>
+                        <p>Residents are solely responsible for their personal belongings. The hostel management is not liable for any loss, theft, or damage to personal property.</p>
+                        
+                        <h3>Room Security</h3>
+                        <p>While we maintain 24/7 security with CCTV surveillance and security personnel, residents are advised to:</p>
+                        <ul>
+                            <li>Lock their rooms when unattended</li>
+                            <li>Not share access cards or keys with others</li>
+                            <li>Report any suspicious activity immediately</li>
+                            <li>Not allow unauthorized persons into the hostel</li>
+                        </ul>
+                        
+                        <h3>Health & Emergency</h3>
+                        <p>In case of medical emergency, hostel staff will provide immediate assistance and arrange for medical help. However, all medical expenses will be borne by the resident.</p>
+                        
+                        <div class="note-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <p><strong>Emergency Contact:</strong> Please ensure your emergency contact information is always updated in our records.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Policy -->
+                    <div class="terms-section" id="privacy">
+                        <h2><i class="fas fa-user-shield"></i> Privacy Policy</h2>
+                        
+                        <h3>Information Collection</h3>
+                        <p>We collect personal information including name, contact details, identification documents, and emergency contact information for booking and security purposes.</p>
+                        
+                        <h3>Data Usage</h3>
+                        <p>Your personal information is used for:</p>
+                        <ul>
+                            <li>Processing your booking and payments</li>
+                            <li>Maintaining security and safety within the hostel</li>
+                            <li>Communication regarding your stay</li>
+                            <li>Legal and regulatory compliance</li>
+                        </ul>
+                        
+                        <h3>Data Protection</h3>
+                        <p>We implement appropriate security measures to protect your personal information from unauthorized access, alteration, or disclosure. Your data will not be shared with third parties without your consent, except as required by law.</p>
+                    </div>
+
+                    <!-- Policy Modifications -->
+                    <div class="terms-section" id="modifications">
+                        <h2><i class="fas fa-edit"></i> Policy Modifications</h2>
+                        
+                        <h3>Updates to Terms</h3>
+                        <p>We reserve the right to modify these terms and conditions at any time. Changes will be effective immediately upon posting on our website. Continued use of our services constitutes acceptance of the modified terms.</p>
+                        
+                        <h3>Notification of Changes</h3>
+                        <p>Significant changes to terms and conditions will be communicated to residents via email and notices displayed in common areas at least 15 days before implementation.</p>
+                        
+                        <h3>Governing Law</h3>
+                        <p>These terms and conditions are governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in New Delhi.</p>
+                    </div>
+
+                    <!-- Last Updated -->
+                    <div class="last-updated">
+                        <p>These Terms & Conditions were last updated on October 15, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>Questions About Our Terms?</h3>
+                        <p class="mb-4">If you have any questions or concerns regarding these terms and conditions, please don't hesitate to contact our management team.</p>
+                        <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <a href="index.html" class="footer-logo">Girls<span>Hostel</span></a>
+                    <p>At Girls Girls Hostel, we are committed to protecting your privacy and ensuring the security of your personal information</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#rooms">Rooms</a></li>
+                           <li><a href="./Terms&Conditions.html">Terms</a> | <a href="./PrivacyPolicy.html">Privacy Policy</a></li>
+                            <li></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Rooms</h5>
+                        <ul>
+                            <li><a href="#rooms">Single Occupancy</a></li>
+                            <li><a href="#rooms">Double Sharing</a></li>
+                            <li><a href="#rooms">Triple Sharing</a></li>
+                            <li><a href="#rooms">Four Sharing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Shivbagh Colony Road, ShivBagh, Balkampet, Hyderabad, Telangana 500016</li>
+                            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@Girlshostel.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Girls Hostel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations for terms sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all terms sections for animation
+        document.querySelectorAll('.terms-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Update active navigation link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.terms-section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

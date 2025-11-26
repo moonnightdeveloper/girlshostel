@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #9c89b8;
+            --accent: #5eead4;
+            --light: #f8f9fa;
+            --dark: #2d3047;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d73;
+            border-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 139, 0.3);
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.1) 0%, rgba(156, 137, 184, 0.1) 100%);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 107, 139, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(156, 137, 184, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Refund Content */
+        .refund-content {
+            padding: 80px 0;
+        }
+
+        .refund-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .refund-nav {
+            position: sticky;
+            top: 120px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .refund-nav h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 12px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .nav-links a i {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .refund-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .refund-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .refund-section h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+        }
+
+        .refund-section h2 i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+
+        .refund-section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+
+        .refund-section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .refund-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .refund-section li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .highlight {
+            background: rgba(255, 107, 139, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: rgba(94, 234, 212, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-box i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .refund-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .refund-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .refund-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .refund-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .refund-table tr:hover {
+            background: rgba(255, 107, 139, 0.05);
+        }
+
+        .refund-process {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .last-updated {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.05) 0%, rgba(156, 137, 184, 0.05) 100%);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .refund-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .refund-section {
+                padding: 30px;
+            }
+            
+            .refund-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .refund-section {
+                padding: 20px;
+            }
+            
+            .refund-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar, .hero, .contact-section, footer {
+                display: none;
+            }
+            
+            .refund-content {
+                padding: 20px 0;
+            }
+            
+            .refund-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Girls<span>Hostel</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./rooms.html">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Refund Policy</h1>
+                    <p>Our transparent and fair refund policy ensures you understand your rights and our procedures for refund requests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refund Content -->
+    <section class="refund-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="refund-nav">
+                        <h4>Quick Navigation</h4>
+                        <ul class="nav-links">
+                            <li><a href="#overview"><i class="fas fa-chevron-right"></i> Policy Overview</a></li>
+                            <li><a href="#cancellation"><i class="fas fa-chevron-right"></i> Cancellation Refunds</a></li>
+                            <li><a href="#security"><i class="fas fa-chevron-right"></i> Security Deposit</a></li>
+                            <li><a href="#early"><i class="fas fa-chevron-right"></i> Early Check-out</a></li>
+                            <li><a href="#process"><i class="fas fa-chevron-right"></i> Refund Process</a></li>
+                            <li><a href="#timeline"><i class="fas fa-chevron-right"></i> Refund Timeline</a></li>
+                            <li><a href="#exceptions"><i class="fas fa-chevron-right"></i> Special Cases</a></li>
+                            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Refund Requests</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Policy Overview -->
+                    <div class="refund-section" id="overview">
+                        <h2><i class="fas fa-file-invoice-dollar"></i> Policy Overview</h2>
+                        
+                        <p>At Girls Girls Hostel, we strive to maintain transparency and fairness in all our financial transactions. This refund policy outlines the circumstances under which refunds are provided and the procedures to follow for refund requests.</p>
+                        
+                        <h3>General Principles</h3>
+                        <p>Our refund policy is based on the following principles:</p>
+                        <ul>
+                            <li>Fair treatment of all residents and applicants</li>
+                            <li>Transparency in refund calculations and procedures</li>
+                            <li>Timely processing of eligible refund requests</li>
+                            <li>Clear communication regarding refund status</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <p><strong>Important:</strong> All refund requests must be submitted in writing via email or through our official portal. Verbal requests will not be processed.</p>
+                        </div>
+                    </div>
+
+                    <!-- Cancellation Refunds -->
+                    <div class="refund-section" id="cancellation">
+                        <h2><i class="fas fa-calendar-times"></i> Cancellation Refunds</h2>
+                        
+                        <h3>Pre-Check-in Cancellations</h3>
+                        <p>If you need to cancel your booking before check-in, the following refund policy applies:</p>
+                        
+                        <table class="refund-table">
+                            <thead>
+                                <tr>
+                                    <th>Cancellation Period</th>
+                                    <th>Security Deposit</th>
+                                    <th>Advance Rent</th>
+                                    <th>Processing Fee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>More than 30 days before check-in</td>
+                                    <td>100% refund</td>
+                                    <td>100% refund</td>
+                                    <td>No charge</td>
+                                </tr>
+                                <tr>
+                                    <td>15-30 days before check-in</td>
+                                    <td>50% refund</td>
+                                    <td>100% refund</td>
+                                    <td>₹500</td>
+                                </tr>
+                                <tr>
+                                    <td>7-14 days before check-in</td>
+                                    <td>25% refund</td>
+                                    <td>75% refund</td>
+                                    <td>₹500</td>
+                                </tr>
+                                <tr>
+                                    <td>Less than 7 days before check-in</td>
+                                    <td>No refund</td>
+                                    <td>50% refund</td>
+                                    <td>₹500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="info-box">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <p><strong>Note:</strong> The processing fee covers administrative costs associated with booking and cancellation procedures. This fee is non-refundable once the cancellation process has been initiated.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Deposit -->
+                    <div class="refund-section" id="security">
+                        <h2><i class="fas fa-shield-alt"></i> Security Deposit Refund</h2>
+                        
+                        <h3>Refund Conditions</h3>
+                        <p>Your security deposit is refundable upon checkout, subject to the following conditions:</p>
+                        <ul>
+                            <li>No damage to hostel property, furniture, or fixtures</li>
+                            <li>All outstanding dues are cleared</li>
+                            <li>Room is handed over in clean and orderly condition</li>
+                            <li>All hostel property (keys, access cards, etc.) is returned</li>
+                            <li>Minimum 30-day notice period is served before checkout</li>
+                            <li>No pending complaints from other residents or staff</li>
+                        </ul>
+                        
+                        <h3>Deductions from Security Deposit</h3>
+                        <p>The following may result in deductions from your security deposit:</p>
+                        <ul>
+                            <li>Damage to property beyond normal wear and tear</li>
+                            <li>Cleaning charges if room requires extra cleaning</li>
+                            <li>Replacement costs for lost or damaged items</li>
+                            <li>Outstanding utility or service charges</li>
+                            <li>Penalties for rule violations (if applicable)</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <p><strong>Room Inspection:</strong> A joint inspection of the room will be conducted at the time of checkout in the presence of the resident. Any issues will be documented and discussed at that time.</p>
+                        </div>
+                    </div>
+
+                    <!-- Early Check-out -->
+                    <div class="refund-section" id="early">
+                        <h2><i class="fas fa-door-closed"></i> Early Check-out Refunds</h2>
+                        
+                        <h3>Voluntary Early Check-out</h3>
+                        <p>If you choose to check out before your planned departure date, the following policy applies:</p>
+                        
+                        <table class="refund-table">
+                            <thead>
+                                <tr>
+                                    <th>Notice Period</th>
+                                    <th>Rent Refund</th>
+                                    <th>Security Deposit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>30 days or more notice</td>
+                                    <td>Pro-rata refund for unused days</td>
+                                    <td>Full refund (subject to conditions)</td>
+                                </tr>
+                                <tr>
+                                    <td>15-29 days notice</td>
+                                    <td>Pro-rata refund minus 15% penalty</td>
+                                    <td>Full refund (subject to conditions)</td>
+                                </tr>
+                                <tr>
+                                    <td>7-14 days notice</td>
+                                    <td>Pro-rata refund minus 30% penalty</td>
+                                    <td>Full refund (subject to conditions)</td>
+                                </tr>
+                                <tr>
+                                    <td>Less than 7 days notice</td>
+                                    <td>No rent refund</td>
+                                    <td>Full refund (subject to conditions)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Calculation Example</h3>
+                        <p>If you paid ₹8,500 for a month (30 days) and check out after 15 days with 20 days notice:</p>
+                        <ul>
+                            <li>Daily rate: ₹8,500 ÷ 30 = ₹283.33</li>
+                            <li>Unused days: 15 days × ₹283.33 = ₹4,250</li>
+                            <li>Penalty (15%): ₹4,250 × 0.15 = ₹637.50</li>
+                            <li>Refund amount: ₹4,250 - ₹637.50 = ₹3,612.50</li>
+                        </ul>
+                    </div>
+
+                    <!-- Refund Process -->
+                    <div class="refund-section" id="process">
+                        <h2><i class="fas fa-cogs"></i> Refund Process</h2>
+                        
+                        <h3>Step-by-Step Procedure</h3>
+                        <p>Follow these steps to request and receive your refund:</p>
+                        
+                        <div class="refund-process">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Submit Written Request</h4>
+                                    <p>Send a formal refund request via email to refunds@Girlshostel.com or through our official portal. Include your booking reference number and reason for refund.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Request Verification</h4>
+                                    <p>Our team will verify your eligibility for refund based on our policy terms and the timing of your request. We may request additional information if needed.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Refund Calculation</h4>
+                                    <p>We will calculate the refund amount based on our policy, considering any applicable deductions, penalties, or processing fees.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Approval & Processing</h4>
+                                    <p>Once approved, the refund will be processed through the original payment method. You will receive a confirmation email with refund details.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Fund Transfer</h4>
+                                    <p>The refund amount will be transferred to your account. The time taken for the funds to reflect depends on your bank's processing time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Refund Timeline -->
+                    <div class="refund-section" id="timeline">
+                        <h2><i class="fas fa-clock"></i> Refund Timeline</h2>
+                        
+                        <h3>Processing Timeframes</h3>
+                        <p>We strive to process refunds as quickly as possible. Below are our standard processing timeframes:</p>
+                        
+                        <table class="refund-table">
+                            <thead>
+                                <tr>
+                                    <th>Refund Type</th>
+                                    <th>Processing Time</th>
+                                    <th>Bank Transfer Time</th>
+                                    <th>Total Timeline</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pre-check-in Cancellation</td>
+                                    <td>5-7 working days</td>
+                                    <td>3-5 working days</td>
+                                    <td>8-12 working days</td>
+                                </tr>
+                                <tr>
+                                    <td>Security Deposit Refund</td>
+                                    <td>7-10 working days</td>
+                                    <td>3-5 working days</td>
+                                    <td>10-15 working days</td>
+                                </tr>
+                                <tr>
+                                    <td>Early Check-out Refund</td>
+                                    <td>7-10 working days</td>
+                                    <td>3-5 working days</td>
+                                    <td>10-15 working days</td>
+                                </tr>
+                                <tr>
+                                    <td>Special Case Refunds</td>
+                                    <td>10-15 working days</td>
+                                    <td>3-5 working days</td>
+                                    <td>13-20 working days</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="info-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <p><strong>Note:</strong> These timelines may vary during peak seasons or bank holidays. We appreciate your patience and understanding during the refund process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Cases -->
+                    <div class="refund-section" id="exceptions">
+                        <h2><i class="fas fa-exclamation-circle"></i> Special Cases & Exceptions</h2>
+                        
+                        <h3>Medical Emergencies</h3>
+                        <p>In case of genuine medical emergencies that prevent you from joining or continuing your stay, we offer special consideration:</p>
+                        <ul>
+                            <li>Full refund of security deposit and advance rent with valid medical certificate</li>
+                            <li>No processing fees applied</li>
+                            <li>Priority processing of refund request</li>
+                            <li>Medical certificate must be from a recognized hospital or medical practitioner</li>
+                        </ul>
+                        
+                        <h3>Hostel-Initiated Cancellations</h3>
+                        <p>If we need to cancel your booking due to unforeseen circumstances, you will receive:</p>
+                        <ul>
+                            <li>Full refund of all amounts paid</li>
+                            <li>Assistance in finding alternative accommodation (if requested)</li>
+                            <li>Priority booking for future dates (if desired)</li>
+                        </ul>
+                        
+                        <h3>Force Majeure</h3>
+                        <p>In cases of force majeure (natural disasters, government restrictions, etc.):</p>
+                        <ul>
+                            <li>Refunds will be processed as per government guidelines and our capability</li>
+                            <li>Alternative arrangements may be offered where possible</li>
+                            <li>Communication regarding the situation will be provided regularly</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <p><strong>Documentation Required:</strong> For special case refunds, appropriate documentation (medical certificates, official notices, etc.) must be provided to support your request.</p>
+                        </div>
+                    </div>
+
+                    <!-- Refund Requests -->
+                    <div class="refund-section" id="contact">
+                        <h2><i class="fas fa-headset"></i> Refund Requests & Support</h2>
+                        
+                        <h3>How to Contact Us</h3>
+                        <p>For refund-related queries and requests, please contact us through the following channels:</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p>refunds@Girlshostel.com</p>
+                                        <p>accounts@Girlshostel.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <h4>Phone</h4>
+                                        <p>+91 98765 43210 (Accounts Dept)</p>
+                                        <p>+91 98765 43211 (Customer Support)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>Required Information</h3>
+                        <p>When contacting us regarding refunds, please provide the following information to expedite the process:</p>
+                        <ul>
+                            <li>Full name and contact details</li>
+                            <li>Booking reference number</li>
+                            <li>Date of booking and planned check-in/check-out</li>
+                            <li>Reason for refund request</li>
+                            <li>Preferred refund method (bank transfer, etc.)</li>
+                            <li>Supporting documents (if applicable)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Last Updated -->
+                    <div class="last-updated">
+                        <p>This Refund Policy was last updated on October 15, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>Questions About Refunds?</h3>
+                        <p class="mb-4">If you have any questions about our refund policy or need assistance with a refund request, our support team is here to help.</p>
+                        <a href="contact.html" class="btn btn-primary">Contact Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <a href="index.html" class="footer-logo">Girls<span>Hostel</span></a>
+                    <p>At Girls Girls Hostel, we are committed to protecting your privacy and ensuring the security of your personal information</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#rooms">Rooms</a></li>
+                           <li><a href="./Terms&Conditions.html">Terms</a> | <a href="./PrivacyPolicy.html">Privacy Policy</a></li>
+                            <li></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Rooms</h5>
+                        <ul>
+                            <li><a href="#rooms">Single Occupancy</a></li>
+                            <li><a href="#rooms">Double Sharing</a></li>
+                            <li><a href="#rooms">Triple Sharing</a></li>
+                            <li><a href="#rooms">Four Sharing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Shivbagh Colony Road, ShivBagh, Balkampet, Hyderabad, Telangana 500016</li>
+                            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@Girlshostel.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Girls Hostel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations for refund sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all refund sections for animation
+        document.querySelectorAll('.refund-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Update active navigation link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.refund-section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

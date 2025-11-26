@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #9c89b8;
+            --accent: #5eead4;
+            --light: #f8f9fa;
+            --dark: #2d3047;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d73;
+            border-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 139, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.1) 0%, rgba(156, 137, 184, 0.1) 100%);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 107, 139, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(156, 137, 184, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-btns {
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--secondary);
+            transform: rotateY(180deg);
+        }
+
+        /* Rooms Section with Auto Slider */
+        .rooms {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.05) 0%, rgba(156, 137, 184, 0.05) 100%);
+        }
+
+        .room-slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-slider {
+            display: flex;
+            transition: transform 0.8s ease;
+        }
+
+        .room-slide {
+            min-width: 100%;
+            padding: 0;
+            position: relative;
+        }
+
+        .room-slide-content {
+            display: flex;
+            flex-wrap: wrap;
+            height: 600px;
+        }
+
+        .room-image {
+            flex: 1;
+            min-width: 300px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .room-slide:hover .room-image img {
+            transform: scale(1.05);
+        }
+
+        .room-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+        }
+
+        .room-type {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .room-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 25px;
+        }
+
+        .room-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .room-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .room-features i {
+            color: var(--accent);
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Amenities Section */
+        .amenities {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: var(--transition);
+        }
+
+        .amenity-item.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .amenity-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .amenity-item:hover .amenity-icon {
+            background: var(--secondary);
+            transform: rotate(15deg);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h5 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--primary);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .room-slide-content {
+                height: auto;
+            }
+
+            .room-details {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 80px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .amenity-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .amenity-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .room-type {
+                font-size: 1.8rem;
+            }
+
+            .room-price {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .room-type {
+                font-size: 1.5rem;
+            }
+
+            .room-price {
+                font-size: 1.4rem;
+            }
+
+            .room-details {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Girls<span>Hostel</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./rooms.html">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Safe & Comfortable Stay for Girls</h1>
+                    <p>Welcome to Girls Girls Hostel - your home away from home. We provide secure, comfortable, and
+                        affordable accommodation with modern amenities.</p>
+                    <div class="hero-btns">
+                        <a href="./rooms.html" class="btn btn-primary me-3">View Rooms</a>
+                        <a href="./booking.html" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Hostel Room" class="img-fluid rounded-3 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Hostel</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card" id="feature1">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>24/7 Security</h3>
+                        <p>Round-the-clock security with CCTV surveillance and secure entry systems for your safety.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card" id="feature2">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Free Wi-Fi</h3>
+                        <p>High-speed internet connectivity throughout the hostel for your study and entertainment
+                            needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card" id="feature3">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Healthy Meals</h3>
+                        <p>Nutritious and hygienic meals prepared in our clean kitchen with a balanced diet focus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section with Auto Slider -->
+    <section class="rooms" id="rooms">
+        <div class="container">
+            <h2 class="section-title">Our Room Options</h2>
+            <div class="room-slider-container">
+                <div class="room-slider" id="roomSlider">
+                    <!-- Slide 1 - Single Occupancy -->
+                    <div class="room-slide">
+                        <div class="room-slide-content">
+                            <div class="room-image">
+                                <img src="https://i.im.ge/2025/11/26/4i2G8Y.libein2.jpeg" alt="Single Room">
+                            </div>
+                            <div class="room-details">
+                                <h3 class="room-type">Single Sharing</h3>
+                                <div class="room-price">₹11,000/month</div>
+                                <ul class="room-features">
+                                    <li><i class="fas fa-check"></i> Personal Bed & Study Table</li>
+                                    <li><i class="fas fa-check"></i> Attached Bathroom</li>
+                                    <li><i class="fas fa-check"></i> Wardrobe & Storage</li>
+                                    <li><i class="fas fa-check"></i> Air Conditioning</li>
+                                    <li><i class="fas fa-check"></i> Free Wi-Fi</li>
+                                    <li><i class="fas fa-check"></i> 24/7 Hot & Cold Water</li>
+                                </ul>
+                                <a href="./booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 - Double Sharing -->
+                    <div class="room-slide">
+                        <div class="room-slide-content">
+                            <div class="room-image">
+                                <img src="https://i.im.ge/2025/11/26/4i2xEc.2sr.jpeg" alt="Double Sharing">
+                            </div>
+                            <div class="room-details">
+                                <h3 class="room-type">Double Sharing</h3>
+                                <div class="room-price">₹9,500/month</div>
+                                <ul class="room-features">
+                                    <li><i class="fas fa-check"></i> Two Beds & Study Tables</li>
+                                    <li><i class="fas fa-check"></i> Attached Bathroom</li>
+                                    <li><i class="fas fa-check"></i> Individual Wardrobes</li>
+                                    <li><i class="fas fa-check"></i> Air Conditioning</li>
+                                    <li><i class="fas fa-check"></i> Free Wi-Fi</li>
+                                    <li><i class="fas fa-check"></i> 24/7 Hot & Cold Water</li>
+                                </ul>
+                                <a href="./booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 - Triple Sharing -->
+                    <div class="room-slide">
+                        <div class="room-slide-content">
+                            <div class="room-image">
+                                <img src="https://i.im.ge/2025/11/26/4i2ygW.3sr1.webp" alt="Triple Sharing">
+                            </div>
+                            <div class="room-details">
+                                <h3 class="room-type">Triple Sharing</h3>
+                                <div class="room-price">₹8,000/month</div>
+                                <ul class="room-features">
+                                    <li><i class="fas fa-check"></i> Three Beds & Study Tables</li>
+                                    <li><i class="fas fa-check"></i> Attached Bathroom</li>
+                                    <li><i class="fas fa-check"></i> Storage Space</li>
+                                    <li><i class="fas fa-check"></i> Air Conditioning</li>
+                                    <li><i class="fas fa-check"></i> Free Wi-Fi</li>
+                                    <li><i class="fas fa-check"></i> 24/7 Hot & Cold Water</li>
+                                </ul>
+                                <a href="./booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 - Triple Sharing -->
+                    <div class="room-slide">
+                        <div class="room-slide-content">
+                            <div class="room-image">
+                                <img src="https://i.im.ge/2025/11/26/4i2t5r.4sr.jpeg" alt="Triple Sharing">
+                            </div>
+                            <div class="room-details">
+                                <h3 class="room-type">four Sharing</h3>
+                                <div class="room-price">₹7,000/month</div>
+                                <ul class="room-features">
+                                    <li><i class="fas fa-check"></i> Three Beds & Study Tables</li>
+                                    <li><i class="fas fa-check"></i> Attached Bathroom</li>
+                                    <li><i class="fas fa-check"></i> Storage Space</li>
+                                    <li><i class="fas fa-check"></i> Air Conditioning</li>
+                                    <li><i class="fas fa-check"></i> Free Wi-Fi</li>
+                                    <li><i class="fas fa-check"></i> 24/7 Hot & Cold Water</li>
+                                </ul>
+                                <a href="./booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Slider Dots -->
+            <div class="slider-dots" id="sliderDots">
+                <span class="slider-dot active" data-slide="0"></span>
+                <span class="slider-dot" data-slide="1"></span>
+                <span class="slider-dot" data-slide="2"></span>
+                <span class="slider-dot" data-slide="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities" id="amenities">
+        <div class="container">
+            <h2 class="section-title">Our Amenities</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="amenity-item" id="amenity1">
+                        <div class="amenity-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <div>
+                            <h4>Hot & Cold Water</h4>
+                            <p>24/7 availability of both hot and cold water for your comfort.</p>
+                        </div>
+                    </div>
+                    <div class="amenity-item" id="amenity2">
+                        <div class="amenity-icon">
+                            <i class="fas fa-soap"></i>
+                        </div>
+                        <div>
+                            <h4>Washing Machine</h4>
+                            <p>Fully automatic washing machines available for laundry needs.</p>
+                        </div>
+                    </div>
+                    <div class="amenity-item" id="amenity3">
+                        <div class="amenity-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div>
+                            <h4>Free Wi-Fi</h4>
+                            <p>High-speed internet connectivity throughout the hostel premises.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="amenity-item" id="amenity4">
+                        <div class="amenity-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div>
+                            <h4>24-Hour Water Supply</h4>
+                            <p>Continuous water supply with backup systems for uninterrupted availability.</p>
+                        </div>
+                    </div>
+                    <div class="amenity-item" id="amenity5">
+                        <div class="amenity-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div>
+                            <h4>Healthy Meals</h4>
+                            <p>Nutritious and hygienic meals served in our clean dining area.</p>
+                        </div>
+                    </div>
+                    <div class="amenity-item" id="amenity6">
+                        <div class="amenity-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div>
+                            <h4>Fitness Area</h4>
+                            <p>Well-equipped fitness area for your daily exercise routine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Residents Say</h2>
+            <div class="testimonial-slider">
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    "Girls Hostel has been my home for the past two years. The environment is safe,
+                                    the food is great, and the facilities are well-maintained. Highly recommended for
+                                    girls looking for a comfortable stay!"
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-img">
+                                        <img src="https://i.pravatar.cc/150?img=32" alt="Priya Sharma">
+                                    </div>
+                                    <div class="author-info">
+                                        <h5>Priya Sharma</h5>
+                                        <p>Student, Delhi University</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    "I moved to Girls Hostel six months ago and it's been a wonderful experience. The
+                                    staff is helpful, the rooms are clean, and the security measures make me feel safe.
+                                    The Wi-Fi is fast which is great for my online classes."
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-img">
+                                        <img src="https://i.pravatar.cc/150?img=12" alt="Anjali Singh">
+                                    </div>
+                                    <div class="author-info">
+                                        <h5>Anjali Singh</h5>
+                                        <p>Student, IP University</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    "The triple sharing room is perfect for my budget and the amenities are excellent. I
+                                    especially appreciate the 24-hour water supply and the washing machine facility. It
+                                    truly feels like a home away from home."
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-img">
+                                        <img src="https://i.pravatar.cc/150?img=44" alt="Neha Gupta">
+                                    </div>
+                                    <div class="author-info">
+                                        <h5>Neha Gupta</h5>
+                                        <p>Working Professional</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <a href="index.html" class="footer-logo">Girls<span>Hostel</span></a>
+                    <p>At Girls Girls Hostel, we are committed to protecting your privacy and ensuring the security of your personal information</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#rooms">Rooms</a></li>
+                           <li><a href="./Terms&Conditions.html">Terms</a> | <a href="./PrivacyPolicy.html">Privacy Policy</a></li>
+                            <li></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-links">
+                        <h5>Rooms</h5>
+                        <ul>
+                            <li><a href="#rooms">Single Occupancy</a></li>
+                            <li><a href="#rooms">Double Sharing</a></li>
+                            <li><a href="#rooms">Triple Sharing</a></li>
+                            <li><a href="#rooms">Four Sharing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Shivbagh Colony Road, ShivBagh, Balkampet, Hyderabad, Telangana 500016</li>
+                            <li><i class="fas fa-phone me-2"></i> +91 98765 43210</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@Girlshostel.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Girls Hostel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        const elementsToAnimate = [
+            document.getElementById('feature1'),
+            document.getElementById('feature2'),
+            document.getElementById('feature3'),
+            document.getElementById('amenity1'),
+            document.getElementById('amenity2'),
+            document.getElementById('amenity3'),
+            document.getElementById('amenity4'),
+            document.getElementById('amenity5'),
+            document.getElementById('amenity6')
+        ];
+
+        elementsToAnimate.forEach(element => {
+            if (element) observer.observe(element);
+        });
+
+        // Room Slider Functionality
+        const roomSlider = document.getElementById('roomSlider');
+        const slides = document.querySelectorAll('.room-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        let autoSlideInterval;
+
+        // Function to update slider position
+        function updateSlider() {
+            roomSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update active dot
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Function to go to next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlider();
+        }
+
+        // Function to go to previous slide
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            updateSlider();
+        }
+
+        // Function to go to specific slide
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSlider();
+        }
+
+        // Event listeners for buttons
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Event listeners for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoSlide();
+            });
+        });
+
+        // Auto slide functionality
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // Start auto sliding
+        startAutoSlide();
+
+        // Pause auto sliding on hover
+        roomSlider.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        roomSlider.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+
+        // Auto slider for testimonials
+        const testimonialCarousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
+            interval: 5000,
+            wrap: true
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>
